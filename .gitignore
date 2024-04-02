@@ -1,7 +1,5 @@
 # Byte-compiled / optimized / DLL files
 .DS_Store
-templates/.DS_Store
-static/.DS_Store
 
 __pycache__/
 *.py[cod]
