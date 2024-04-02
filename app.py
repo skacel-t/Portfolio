@@ -30,10 +30,11 @@ def index():
 
 @app.route('/about')
 def about():
-	return render_template('about.html')
+	projects = Project.query.all()
+	return render_template('about.html', projects=projects)
 
 
-@app.route('/projects/new', methods=['GET', 'POST'])
+@app.route('/project/new', methods=['GET', 'POST'])
 def add_project():
 	projects = Project.query.all()
 	if request.form:
@@ -46,14 +47,14 @@ def add_project():
 	return render_template('projectform.html', projects=projects)
 
 
-@app.route('/projects/<id>')
+@app.route('/project/<id>')
 def project(id):
 	projects = Project.query.all()
 	project = Project.query.get_or_404(id)
 	return render_template('detail.html', project=project, projects=projects)
 
 
-@app.route('/projects/<id>/edit', methods=['GET', 'POST'])
+@app.route('/project/<id>/edit', methods=['GET', 'POST'])
 def edit_project(id):
 	projects = Project.query.all()
 	project = Project.query.get_or_404(id)
@@ -68,7 +69,7 @@ def edit_project(id):
 	return render_template('editproject.html', projects=projects, project=project)
 
 
-@app.route('/projects/<id>/delete')
+@app.route('/project/<id>/delete')
 def delete_project(id):
 	project = Project.query.get_or_404(id)
 	db.session.delete(project)
