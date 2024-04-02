@@ -3,15 +3,17 @@
 {% block content %}
     <section class="header">
         <h1>Python Developer</h1>
-        <p>It's not a bug, it's an undocumented feature!</p>
+        <p>Applying my passion for mathematics in Python to create interesting and useful applications.</p>
         <img src="/static/headshot.jpg" alt="Headshot of myself">
     </section>
     <section id="about">
-        <h2>About Me</h2>
+        <a href="{{ url_for('about') }}" style="text-decoration:none">
+            <h2>About Me</h2>
+        </a>
         <p>
-            I'm a mathematician specializing in abstract and skeletal polyhedra, a mathematics instructor, and a passionate 
-            python programmer. In this portfolio you can find my python projects that I have completed whilst working 
-            on the Treehouse Python Development Techdegree.  
+            I'm a mathematician, a mathematics instructor, and a passionate 
+            Python programmer. In this portfolio you can find my Python projects that I have completed whilst working 
+            on the Treehouse Python Development Techdegree. Click  the About Me text above to find out more.  
         </p>
         <div id="triangle1"></div>
         <div id="triangle2"></div>
@@ -43,7 +45,7 @@
                         View on GitHub
                     </a>
                     <p>
-                        Description: {{ project.description }}
+                        {{ project.description }}
                     </p>
                     <p>
                         Skills: {{ project.skills }}
@@ -56,7 +58,7 @@
         <i class="fas fa-paper-plane"></i>
         <h2>Contact Me</h2>
         <p>
-            I can be reached via email or linkedin. For any inquiries, please reach out.  
+            I can be reached via email or LinkedIn. For any inquiries, please reach out.  
         </p>
         <p>
             <i class="fas fa-envelope"></i>

@@ -1,12 +1,12 @@
 from flask import Flask, render_template, url_for, request, redirect
 from flask_sqlalchemy import SQLAlchemy
-import datetime
 
-# Start by building our db model and database connection
 
+# Start by building our db model and database connection ------------------------------------------
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///projects.db"
 db = SQLAlchemy(app)
+
 
 class Project(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
@@ -22,7 +22,6 @@ class Project(db.Model):
 
 
 # Next let's create the routing in the website and create the app ---------------------------------
-
 @app.route('/')
 def index():
 	projects = Project.query.all()
