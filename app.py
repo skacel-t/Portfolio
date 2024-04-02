@@ -21,7 +21,7 @@ class Project(db.Model):
 		return f"""<Project (Name: {self.name})>"""
 
 
-# Next let's create the routing in the website and create the app
+# Next let's create the routing in the website and create the app ---------------------------------
 
 @app.route('/')
 def index():
@@ -29,9 +29,13 @@ def index():
 	return render_template('index.html', projects=projects)
 
 
+@app.route('/about')
+def about():
+	return render_template('about.html')
+
+
 @app.route('/projects/new', methods=['GET', 'POST'])
 def add_project():
-	# don't forget to also update form.html file with post
 	projects = Project.query.all()
 	if request.form:
 		new_project = Project(title=request.form['title'], date=request.form['date'],
@@ -73,13 +77,13 @@ def delete_project(id):
 	return redirect(url_for('index'))
 
 
+@app.errorhandler(404)
+def not_found(error):
+    return render_template('404.html', msg=error), 404
+
+
 if __name__ == "__main__":
 	with app.app_context():
 		db.create_all()    
 	app.run(debug=True, port=8000, host='127.0.0.1') 
 
-
-	# new_project = Project(title="Number Guessing Game", date="January 15, 2024", description="Project 1", skills="Basic Python", github_url="LINK HERE")
-	# db.session.add(new_project)
-	# db.session.commit()   
-    
